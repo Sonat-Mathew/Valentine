@@ -375,9 +375,38 @@
       });
 
       setTimeout(() => {
-
-        alert("YAY 💕 I can’t wait for Valentine’s Day with you!");
-
+        document.body.innerHTML = `
+          <div style="
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            padding:30px;
+            font-family:'Playfair Display', serif;
+            color:#4a1c2f;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+          ">
+            <div style="
+              max-width:700px;
+              background: rgba(255,255,255,0.75);
+              backdrop-filter: blur(18px);
+              border-radius: 28px;
+              padding: 40px 30px;
+              box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+            ">
+              <div style="font-size:64px; margin-bottom:16px;">💖</div>
+              <h1 style="margin-bottom:20px;">Hey You,</h1>
+              <p style="font-size:22px; line-height:1.6;">
+                The world is full of lonely people afraid to make the first move,<br>
+                thanks for pushing me 🫂
+              </p>
+              <p style="margin-top:24px; font-size:18px; opacity:0.85;">
+                Today just became a little more special because of you ✨
+              </p>
+            </div>
+          </div>
+        `;
       }, 500);
 
     });
@@ -409,6 +438,5 @@
   </script>
 
 </body>
-  
 
 </html>
