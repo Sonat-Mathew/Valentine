@@ -10,19 +10,13 @@
 
   <title>Be My Valentine 💘</title>
 
-
-
   <!-- Fonts -->
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-
-
   <!-- Confetti -->
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-
 
   <style>
 
@@ -35,8 +29,6 @@
       padding: 0;
 
     }
-
-
 
     body {
 
@@ -60,8 +52,6 @@
 
     }
 
-
-
     @keyframes bgMove {
 
       0% { background-position: 0% 50%; }
@@ -71,8 +61,6 @@
       100% { background-position: 0% 50%; }
 
     }
-
-
 
     /* Card */
 
@@ -102,8 +90,6 @@
 
     }
 
-
-
     @keyframes cardIn {
 
       from { opacity: 0; transform: translateY(30px) scale(0.95); }
@@ -111,8 +97,6 @@
       to { opacity: 1; transform: translateY(0) scale(1); }
 
     }
-
-
 
     /* Glow ring */
 
@@ -136,8 +120,6 @@
 
     }
 
-
-
     .emoji {
 
       font-size: 68px;
@@ -147,8 +129,6 @@
       animation: heartbeat 1.8s infinite;
 
     }
-
-
 
     @keyframes heartbeat {
 
@@ -161,8 +141,6 @@
       75% { transform: scale(1.12); }
 
     }
-
-
 
     h2 {
 
@@ -178,8 +156,6 @@
 
     }
 
-
-
     .buttons {
 
       position: relative;
@@ -187,8 +163,6 @@
       height: 78px;
 
     }
-
-
 
     button {
 
@@ -212,15 +186,11 @@
 
     }
 
-
-
     button:active {
 
       transform: scale(0.94);
 
     }
-
-
 
     #yes {
 
@@ -234,8 +204,6 @@
 
     }
 
-
-
     #yes:hover {
 
       transform: translateY(-3px);
@@ -243,8 +211,6 @@
       box-shadow: 0 20px 40px rgba(255,77,109,0.7);
 
     }
-
-
 
     #no {
 
@@ -255,8 +221,6 @@
       color: #777;
 
     }
-
-
 
     .hint {
 
@@ -269,8 +233,6 @@
       font-style: italic;
 
     }
-
-
 
     /* Floating depth hearts */
 
@@ -287,8 +249,6 @@
       filter: blur(0.3px);
 
     }
-
-
 
     @keyframes floatUp {
 
@@ -310,8 +270,6 @@
 
     }
 
-
-
     /* Responsive */
 
     @media (max-width: 480px) {
@@ -332,19 +290,13 @@
 
 </head>
 
-
-
 <body>
-
-
 
   <div class="card">
 
     <div class="emoji">🐱❤️</div>
 
     <h2>Annu<br>will you be my Valentine?</h2>
-
-  
 
     <div class="buttons">
 
@@ -354,21 +306,15 @@
 
     </div>
 
-
-
     <div class="hint">Some love stories don’t allow “no” ✨</div>
 
   </div>
-
-
 
   <!-- Sounds -->
 
   <audio id="hoverSound" src="https://assets.mixkit.co/sfx/preview/mixkit-cartoon-voice-laugh-343.mp3"></audio>
 
   <audio id="yesSound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3"></audio>
-
-
 
   <script>
 
@@ -378,11 +324,11 @@
 
     const card = document.querySelector(".card");
 
+    const buttonsContainer = document.querySelector(".buttons");
+
     const hoverSound = document.getElementById("hoverSound");
 
     const yesSound = document.getElementById("yesSound");
-
-
 
     noBtn.addEventListener("mouseenter", () => {
 
@@ -390,33 +336,33 @@
 
       hoverSound.play();
 
-
-
-      const cardRect = card.getBoundingClientRect();
+      const containerRect = buttonsContainer.getBoundingClientRect();
 
       const btnRect = noBtn.getBoundingClientRect();
 
+      const maxX = containerRect.width - btnRect.width;
 
+      const maxY = containerRect.height - btnRect.height;
 
-      const maxX = cardRect.width - btnRect.width - 10;
+      let x = Math.random() * maxX;
 
-      const maxY = cardRect.height - btnRect.height - 10;
+      let y = Math.random() * maxY;
 
+      // Clamp just in case
 
+      x = Math.max(0, Math.min(x, maxX));
 
-      noBtn.style.left = Math.random() * maxX + "px";
+      y = Math.max(0, Math.min(y, maxY));
 
-      noBtn.style.top = Math.random() * maxY + "px";
+      noBtn.style.left = x + "px";
+
+      noBtn.style.top = y + "px";
 
     });
-
-
 
     yesBtn.addEventListener("click", () => {
 
       yesSound.play();
-
-
 
       confetti({
 
@@ -428,8 +374,6 @@
 
       });
 
-
-
       setTimeout(() => {
 
         alert("YAY 💕 I can’t wait for Valentine’s Day with you!");
@@ -437,8 +381,6 @@
       }, 500);
 
     });
-
-
 
     function createHeart() {
 
@@ -456,23 +398,16 @@
 
       heart.style.opacity = Math.random() * 0.5 + 0.4;
 
-
-
       document.body.appendChild(heart);
 
       setTimeout(() => heart.remove(), 8000);
 
     }
 
-
-
     setInterval(createHeart, 380);
 
   </script>
 
-
 </body>
 
-
 </html>
- 
